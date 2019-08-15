@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:cupertino_progress_bar/cupertino_progress_bar.dart';
 
 void main() => runApp(DemoApp());
 
@@ -13,7 +14,11 @@ class _DemoAppState extends State<DemoApp> {
     return CupertinoApp(
       home: CupertinoPageScaffold(
         child: ListView(
-          children: <Widget>[],
+          children: <Widget>[
+            CupertinoProgressBar(
+              value: .3,
+            ),
+          ],
         ),
       ),
     );
