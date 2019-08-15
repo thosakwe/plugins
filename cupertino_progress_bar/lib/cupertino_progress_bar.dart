@@ -10,10 +10,10 @@ class CupertinoProgressBar extends StatefulWidget {
   const CupertinoProgressBar(
       {Key key,
       @required this.value,
-      this.animationDuration = const Duration(milliseconds: 250),
+      this.animationDuration = const Duration(milliseconds: 500),
       this.height = 2,
       this.color,
-      this.trackColor = const Color(0xFFB5B5B5)})
+      this.trackColor = const Color(0xFFb5b5b5)})
       : super(key: key);
 
   @override
@@ -37,7 +37,14 @@ class CupertinoProgressBarState extends State<CupertinoProgressBar>
 
   void animateToValue() {
     var v = widget.value.clamp(0.0, 1.0);
-    animation = Tween<double>(begin: 0, end: v).animate(animationController)
+    // animation = Tween<double>(begin: 0, end: v).animate(animationController)
+    animation = Tween<double>(begin: 0, end: v).animate(CurvedAnimation(
+        parent: animationController,
+        curve: Interval(
+          0.125,
+          0.250,
+          curve: Curves.ease,
+        )))
       ..addListener(() {
         setState(() {
           // TODO:
